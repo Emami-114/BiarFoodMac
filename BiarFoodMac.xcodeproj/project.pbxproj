@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C7FB6AC2A94A69C004CCC86 /* BiarFoodMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FB6AB2A94A69C004CCC86 /* BiarFoodMacApp.swift */; };
+		4C7FB6AE2A94A69C004CCC86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FB6AD2A94A69C004CCC86 /* ContentView.swift */; };
+		4C7FB6B02A94A69D004CCC86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FB6AF2A94A69D004CCC86 /* Assets.xcassets */; };
+		4C7FB6B32A94A69D004CCC86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FB6B22A94A69D004CCC86 /* Preview Assets.xcassets */; };
+		4C7FB6BE2A94A69D004CCC86 /* BiarFoodMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FB6BD2A94A69D004CCC86 /* BiarFoodMacTests.swift */; };
+		4C7FB6C82A94A69D004CCC86 /* BiarFoodMacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FB6C72A94A69D004CCC86 /* BiarFoodMacUITests.swift */; };
+		4C7FB6CA2A94A69D004CCC86 /* BiarFoodMacUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FB6C92A94A69D004CCC86 /* BiarFoodMacUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C7FB6BA2A94A69D004CCC86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C7FB6A02A94A69C004CCC86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C7FB6A72A94A69C004CCC86;
+			remoteInfo = BiarFoodMac;
+		};
+		4C7FB6C42A94A69D004CCC86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C7FB6A02A94A69C004CCC86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C7FB6A72A94A69C004CCC86;
+			remoteInfo = BiarFoodMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C7FB6A82A94A69C004CCC86 /* BiarFoodMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiarFoodMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C7FB6AB2A94A69C004CCC86 /* BiarFoodMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiarFoodMacApp.swift; sourceTree = "<group>"; };
+		4C7FB6AD2A94A69C004CCC86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4C7FB6AF2A94A69D004CCC86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C7FB6B22A94A69D004CCC86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4C7FB6B42A94A69D004CCC86 /* BiarFoodMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BiarFoodMac.entitlements; sourceTree = "<group>"; };
+		4C7FB6B92A94A69D004CCC86 /* BiarFoodMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiarFoodMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C7FB6BD2A94A69D004CCC86 /* BiarFoodMacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiarFoodMacTests.swift; sourceTree = "<group>"; };
+		4C7FB6C32A94A69D004CCC86 /* BiarFoodMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiarFoodMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C7FB6C72A94A69D004CCC86 /* BiarFoodMacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiarFoodMacUITests.swift; sourceTree = "<group>"; };
+		4C7FB6C92A94A69D004CCC86 /* BiarFoodMacUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiarFoodMacUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C7FB6A52A94A69C004CCC86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6B62A94A69D004CCC86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6C02A94A69D004CCC86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C7FB69F2A94A69C004CCC86 = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6AA2A94A69C004CCC86 /* BiarFoodMac */,
+				4C7FB6BC2A94A69D004CCC86 /* BiarFoodMacTests */,
+				4C7FB6C62A94A69D004CCC86 /* BiarFoodMacUITests */,
+				4C7FB6A92A94A69C004CCC86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C7FB6A92A94A69C004CCC86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6A82A94A69C004CCC86 /* BiarFoodMac.app */,
+				4C7FB6B92A94A69D004CCC86 /* BiarFoodMacTests.xctest */,
+				4C7FB6C32A94A69D004CCC86 /* BiarFoodMacUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C7FB6AA2A94A69C004CCC86 /* BiarFoodMac */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6AB2A94A69C004CCC86 /* BiarFoodMacApp.swift */,
+				4C7FB6AD2A94A69C004CCC86 /* ContentView.swift */,
+				4C7FB6AF2A94A69D004CCC86 /* Assets.xcassets */,
+				4C7FB6B42A94A69D004CCC86 /* BiarFoodMac.entitlements */,
+				4C7FB6B12A94A69D004CCC86 /* Preview Content */,
+			);
+			path = BiarFoodMac;
+			sourceTree = "<group>";
+		};
+		4C7FB6B12A94A69D004CCC86 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6B22A94A69D004CCC86 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4C7FB6BC2A94A69D004CCC86 /* BiarFoodMacTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6BD2A94A69D004CCC86 /* BiarFoodMacTests.swift */,
+			);
+			path = BiarFoodMacTests;
+			sourceTree = "<group>";
+		};
+		4C7FB6C62A94A69D004CCC86 /* BiarFoodMacUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FB6C72A94A69D004CCC86 /* BiarFoodMacUITests.swift */,
+				4C7FB6C92A94A69D004CCC86 /* BiarFoodMacUITestsLaunchTests.swift */,
+			);
+			path = BiarFoodMacUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C7FB6A72A94A69C004CCC86 /* BiarFoodMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C7FB6CD2A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMac" */;
+			buildPhases = (
+				4C7FB6A42A94A69C004CCC86 /* Sources */,
+				4C7FB6A52A94A69C004CCC86 /* Frameworks */,
+				4C7FB6A62A94A69C004CCC86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BiarFoodMac;
+			productName = BiarFoodMac;
+			productReference = 4C7FB6A82A94A69C004CCC86 /* BiarFoodMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C7FB6B82A94A69D004CCC86 /* BiarFoodMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C7FB6D02A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMacTests" */;
+			buildPhases = (
+				4C7FB6B52A94A69D004CCC86 /* Sources */,
+				4C7FB6B62A94A69D004CCC86 /* Frameworks */,
+				4C7FB6B72A94A69D004CCC86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C7FB6BB2A94A69D004CCC86 /* PBXTargetDependency */,
+			);
+			name = BiarFoodMacTests;
+			productName = BiarFoodMacTests;
+			productReference = 4C7FB6B92A94A69D004CCC86 /* BiarFoodMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4C7FB6C22A94A69D004CCC86 /* BiarFoodMacUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C7FB6D32A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMacUITests" */;
+			buildPhases = (
+				4C7FB6BF2A94A69D004CCC86 /* Sources */,
+				4C7FB6C02A94A69D004CCC86 /* Frameworks */,
+				4C7FB6C12A94A69D004CCC86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C7FB6C52A94A69D004CCC86 /* PBXTargetDependency */,
+			);
+			name = BiarFoodMacUITests;
+			productName = BiarFoodMacUITests;
+			productReference = 4C7FB6C32A94A69D004CCC86 /* BiarFoodMacUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C7FB6A02A94A69C004CCC86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4C7FB6A72A94A69C004CCC86 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					4C7FB6B82A94A69D004CCC86 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 4C7FB6A72A94A69C004CCC86;
+					};
+					4C7FB6C22A94A69D004CCC86 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 4C7FB6A72A94A69C004CCC86;
+					};
+				};
+			};
+			buildConfigurationList = 4C7FB6A32A94A69C004CCC86 /* Build configuration list for PBXProject "BiarFoodMac" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C7FB69F2A94A69C004CCC86;
+			productRefGroup = 4C7FB6A92A94A69C004CCC86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C7FB6A72A94A69C004CCC86 /* BiarFoodMac */,
+				4C7FB6B82A94A69D004CCC86 /* BiarFoodMacTests */,
+				4C7FB6C22A94A69D004CCC86 /* BiarFoodMacUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C7FB6A62A94A69C004CCC86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C7FB6B32A94A69D004CCC86 /* Preview Assets.xcassets in Resources */,
+				4C7FB6B02A94A69D004CCC86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6B72A94A69D004CCC86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6C12A94A69D004CCC86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C7FB6A42A94A69C004CCC86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C7FB6AE2A94A69C004CCC86 /* ContentView.swift in Sources */,
+				4C7FB6AC2A94A69C004CCC86 /* BiarFoodMacApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6B52A94A69D004CCC86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C7FB6BE2A94A69D004CCC86 /* BiarFoodMacTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C7FB6BF2A94A69D004CCC86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C7FB6CA2A94A69D004CCC86 /* BiarFoodMacUITestsLaunchTests.swift in Sources */,
+				4C7FB6C82A94A69D004CCC86 /* BiarFoodMacUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C7FB6BB2A94A69D004CCC86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C7FB6A72A94A69C004CCC86 /* BiarFoodMac */;
+			targetProxy = 4C7FB6BA2A94A69D004CCC86 /* PBXContainerItemProxy */;
+		};
+		4C7FB6C52A94A69D004CCC86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C7FB6A72A94A69C004CCC86 /* BiarFoodMac */;
+			targetProxy = 4C7FB6C42A94A69D004CCC86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4C7FB6CB2A94A69D004CCC86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C7FB6CC2A94A69D004CCC86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		4C7FB6CE2A94A69D004CCC86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BiarFoodMac/BiarFoodMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BiarFoodMac/Preview Content\"";
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4C7FB6CF2A94A69D004CCC86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BiarFoodMac/BiarFoodMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BiarFoodMac/Preview Content\"";
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		4C7FB6D12A94A69D004CCC86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BiarFoodMac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BiarFoodMac";
+			};
+			name = Debug;
+		};
+		4C7FB6D22A94A69D004CCC86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BiarFoodMac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BiarFoodMac";
+			};
+			name = Release;
+		};
+		4C7FB6D42A94A69D004CCC86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMacUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BiarFoodMac;
+			};
+			name = Debug;
+		};
+		4C7FB6D52A94A69D004CCC86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ST82B9K62G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = emami.BiarFoodMacUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BiarFoodMac;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C7FB6A32A94A69C004CCC86 /* Build configuration list for PBXProject "BiarFoodMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C7FB6CB2A94A69D004CCC86 /* Debug */,
+				4C7FB6CC2A94A69D004CCC86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C7FB6CD2A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C7FB6CE2A94A69D004CCC86 /* Debug */,
+				4C7FB6CF2A94A69D004CCC86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C7FB6D02A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C7FB6D12A94A69D004CCC86 /* Debug */,
+				4C7FB6D22A94A69D004CCC86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C7FB6D32A94A69D004CCC86 /* Build configuration list for PBXNativeTarget "BiarFoodMacUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C7FB6D42A94A69D004CCC86 /* Debug */,
+				4C7FB6D52A94A69D004CCC86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C7FB6A02A94A69C004CCC86 /* Project object */;
+}
