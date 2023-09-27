@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonIcon: View {
+struct SmallButton: View {
     var icon : String = "xmark"
     var fontSize: Font = .title
     var funktion: () -> Void
@@ -32,6 +32,6 @@ struct ButtonIcon: View {
 
 struct ButtonIcon_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonIcon(funktion: {})
+        SmallButton(funktion: {})
     }
 }

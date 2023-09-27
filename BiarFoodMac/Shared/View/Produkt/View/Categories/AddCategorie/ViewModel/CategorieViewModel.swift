@@ -12,8 +12,11 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 class CategorieViewModel: ObservableObject {
     @Published var title: String = ""
-    @Published var description = ""
-    @Published var type: String = ""
+    var titleTrimming : String {
+        title.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    @Published var description = "".trimmingCharacters(in: .whitespacesAndNewlines)
+    @Published var type: String = "".trimmingCharacters(in: .whitespacesAndNewlines)
     @Published  var selectedImage: NSImage? = nil
     @Published  var uploadProgress: Double = 0.0
     @Published  var uploadComplete: Bool? = nil
@@ -48,7 +51,7 @@ class CategorieViewModel: ObservableObject {
         
         guard let imageUrl = try await uploadCatgoryPhoto() else {return}
         
-        categorieRespository.createCatgorie(title: title, mainId: selectedCategorie.id ?? "", desc: description, type: type, imageUrl: imageUrl)
+        categorieRespository.createCatgorie(title: titleTrimming, mainId: selectedCategorie.id ?? "", desc: description, type: type, imageUrl: imageUrl)
         
 
     }
@@ -85,7 +88,7 @@ class CategorieViewModel: ObservableObject {
         }
     }
     
-    func choosePhoto() {
+    @MainActor func choosePhoto() {
         self.selectedImage = PhotoChoisePanel.shared.choosePhoto()
     }
     
@@ -94,11 +97,12 @@ class CategorieViewModel: ObservableObject {
     }
     
 
-    
-    
-    func deleteCategory(with id :String,imageUrl: String){
+    func deleteCategory(wit id: String,imageurl:String){
         categorieRespository.deleteCategory(with: id)
-        storageRespository.deleteImage(with: imageUrl)
+        if !imageurl.isEmpty{
+            storageRespository.deleteImage(with: imageurl)
+        }
+        
     }
     
 }

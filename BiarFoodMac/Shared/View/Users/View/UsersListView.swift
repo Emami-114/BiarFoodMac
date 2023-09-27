@@ -24,11 +24,11 @@ struct UsersListView: View {
                 TableColumn("Rolle", value: \.rolle)
                 TableColumn("Bearbeiten") { use in
                     HStack(spacing: 10){
-                        ButtonIcon(icon:"square.and.pencil",fontSize: .title2){
+                        SmallButton(icon:"square.and.pencil",fontSize: .title2){
                             self.selectedUser = use
                             self.showEditView = true
                         }.help("Benutzer Bearbeiten")
-                        ButtonIcon(icon: "trash.fill", fontSize: .title2){
+                        SmallButton(icon: "trash.fill", fontSize: .title2){
                             self.selectedUser = use
                             self.showAlert.toggle()
                         }.help("Benutzer Löschen")
@@ -40,7 +40,6 @@ struct UsersListView: View {
                     UserEditView(user: selectedUser, showEditView: $showEditView)
                         .frame(minWidth: 400,maxWidth: 600)
                         .frame(maxHeight: .infinity)
-
                 }
             }
         }
@@ -51,6 +50,7 @@ struct UsersListView: View {
                 }
             }), secondaryButton: .cancel())
         }
+        .animation(.easeInOut(duration: 0.3), value: showEditView)
     }
 }
 

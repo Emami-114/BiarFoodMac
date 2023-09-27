@@ -58,7 +58,7 @@ class CategoriesEditViewModel : ObservableObject {
             categoriesRepository.updateCategory(with: id, title: title, desc: description, type: type, imageUrl: updateImage(uploadImageUrl: uploadImageUrl))
         }
     
-    func choosePhoto() {
+    @MainActor func choosePhoto() {
         self.selectedImage = PhotoChoisePanel.shared.choosePhoto()
     }
     

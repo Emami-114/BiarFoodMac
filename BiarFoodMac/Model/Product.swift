@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 struct Product : Codable, Identifiable {
-    @DocumentID var id: String?
+    var id: String = ""
     let title: String
     let desc: String
     let price: Double
@@ -44,5 +44,7 @@ struct Product : Codable, Identifiable {
     var additionallyWert: String
     let isCold: Bool
     let isPublic: Bool
+    let adult: Bool
+    let minimumAge: Int
     var createdAt : Timestamp = Timestamp()
 }

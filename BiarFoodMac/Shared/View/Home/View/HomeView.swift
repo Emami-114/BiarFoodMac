@@ -20,7 +20,7 @@ struct HomeView: View {
             case "Produkt" : Products()
             case "Sliders" : SlidersMainView()
             case "Users" : UsersListView()
-            case "Bestellung" : Text("Bestellung")
+            case "Bestellung" : OrdersListView()
             case "Einstellung" : Text("Einstellung")
             default : Text("")
         }

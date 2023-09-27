@@ -51,7 +51,7 @@ struct CategoryEditView: View {
                         .frame(maxWidth: 300)
                         .cornerRadius(20)
                 }
-                Button("Kategorie Auswählen", action: viewModel.choosePhoto)
+                Button("Kategorie Auswählen", action: {viewModel.choosePhoto()})
                     .font(.title3.bold())
                     .padding(.horizontal,13)
                     .padding(.vertical,8)

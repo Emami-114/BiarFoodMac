@@ -17,6 +17,8 @@ struct TextFieldSingle: View {
         VStack(alignment: .leading,spacing: 10){
             Text(title)
             TextField(title, text: $text,prompt: Text(title))
+                .lineLimit(1)
+                
                 .font(.title3)
                 .textFieldStyle(.plain)
                 
@@ -24,7 +26,7 @@ struct TextFieldSingle: View {
                 .padding(.horizontal)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .background(RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(isHover ? Color.primary.opacity(0.6) : Color.primary.opacity(0.25)))
+                    .strokeBorder(isHover ? Color.primary.opacity(0.6) : Color.primary.opacity(0.25), lineWidth: isHover ? 1.5 : 0.8))
                 .onHover { onHover in
                     withAnimation(.spring()){
                         self.isHover = onHover

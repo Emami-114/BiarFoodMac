@@ -24,11 +24,9 @@ class ProductRepository {
 
 
 extension ProductRepository {
-    
     func fetchProducts(){
-        
         self.listner = FirebaseManager.shared.database.collection("produkten")
-//            .order(by: "id", descending: true)
+            .order(by: "createdAt", descending: true)
             .addSnapshotListener({ queryDocument, error in
                 if let error = error {
                     print(error.localizedDescription)
@@ -60,11 +58,13 @@ extension ProductRepository {
 
 extension ProductRepository {
     
-    func createProduct(title:String,description: String,price:Double,categorie: [String],brand:String,sale: Bool,salePrice: Double,unit: String,imageUrl:String,unitAmountPrice: String,tax: Int,articleNumber: String,available: Bool,availableAmount: Int,deposit: Bool,depositType: String,depositPrice: Double,netFillingQuantity: String,alcoholicContent: String,nutriScore: String,ingredientsAndAlegy: String,madeIn: String,referencePoint: String,calorificKJ: String,caloricValueKcal: String,fat: String,fatFromSour: String,carbohydrates: String,CarbohydratesFromSugar: String,protein: String,salt: String, additionallyWert: String,isCold: Bool,isPublic: Bool
+    func createProduct(title:String,description: String,price:Double,categorie: [String],brand:String,sale: Bool,salePrice: Double,unit: String,imageUrl:String,unitAmountPrice: String,tax: Int,articleNumber: String,available: Bool,availableAmount: Int,deposit: Bool,depositType: String,depositPrice: Double,netFillingQuantity: String,alcoholicContent: String,nutriScore: String,ingredientsAndAlegy: String,madeIn: String,referencePoint: String,calorificKJ: String,caloricValueKcal: String,fat: String,fatFromSour: String,carbohydrates: String,CarbohydratesFromSugar: String,protein: String,salt: String, additionallyWert: String,isCold: Bool,isPublic: Bool,adult: Bool,
+        minimumAge: Int
     
     ){
-        
-        let product = Product(title: title,
+        let firebaseRef = FirebaseManager.shared.database.collection("produkten")
+        let documentId = firebaseRef.document().documentID
+        let product = Product(id: documentId ,title: title,
                               desc: description,
                               price: price,
                               categorie: categorie,
@@ -86,10 +86,10 @@ extension ProductRepository {
                               nutriScore: nutriScore,
                               ingredientsAndAlegy: ingredientsAndAlegy,
                               madeIn: madeIn, referencePoint: referencePoint,
-                              calorificKJ: calorificKJ, caloricValueKcal: caloricValueKcal, fat: fat, fatFromSour: fatFromSour, carbohydrates: carbohydrates, CarbohydratesFromSugar: CarbohydratesFromSugar, protein: protein, salt: salt, additionallyWert: additionallyWert,isCold: isCold,isPublic: isPublic)
+                              calorificKJ: calorificKJ, caloricValueKcal: caloricValueKcal, fat: fat, fatFromSour: fatFromSour, carbohydrates: carbohydrates, CarbohydratesFromSugar: CarbohydratesFromSugar, protein: protein, salt: salt, additionallyWert: additionallyWert,isCold: isCold,isPublic: isPublic,adult: adult,minimumAge: minimumAge)
         
         do{
-            try FirebaseManager.shared.database.collection("produkten").addDocument(from: product)
+            try firebaseRef.document(documentId).setData(from: product)
         } catch let error {
             print("Fehler beim Speichern des tasks: \(error)")
         }
@@ -99,7 +99,8 @@ extension ProductRepository {
 }
 
 extension ProductRepository{
-    func updateProduct(with id: String,title:String,description: String,price:Double,categorie: [String],brand:String,sale: Bool,salePrice: Double,unit: String,imageUrl:String,unitAmountPrice: String,tax: Int,articleNumber: String,available: Bool,availableAmount: Int,deposit: Bool,depositType: String,depositPrice: Double,netFillingQuantity: String,alcoholicContent: String,nutriScore: String,ingredientsAndAlegy: String,madeIn: String,referencePoint: String,calorificKJ: String,caloricValueKcal: String,fat: String,fatFromSour: String,carbohydrates: String,CarbohydratesFromSugar: String,protein: String,salt: String, additionallyWert: String,isCold: Bool,isPublic: Bool){
+    func updateProduct(with id: String,title:String,description: String,price:Double,categorie: [String],brand:String,sale: Bool,salePrice: Double,unit: String,imageUrl:String,unitAmountPrice: String,tax: Int,articleNumber: String,available: Bool,availableAmount: Int,deposit: Bool,depositType: String,depositPrice: Double,netFillingQuantity: String,alcoholicContent: String,nutriScore: String,ingredientsAndAlegy: String,madeIn: String,referencePoint: String,calorificKJ: String,caloricValueKcal: String,fat: String,fatFromSour: String,carbohydrates: String,CarbohydratesFromSugar: String,protein: String,salt: String, additionallyWert: String,isCold: Bool,isPublic: Bool,adult: Bool,
+                       minimumAge: Int){
         
         let data : [String : Any] = [
             "title" : title,
@@ -135,7 +136,9 @@ extension ProductRepository{
             "salt" : salt,
             "additionallyWert" : additionallyWert,
             "isCold" : isCold,
-            "isPublic" : isPublic
+            "isPublic" : isPublic,
+            "adult" : adult,
+            "minimumAge" : minimumAge
         ]
         
         FirebaseManager.shared.database.collection("produkten").document(id).setData(data,merge: true){error in

@@ -20,21 +20,9 @@ struct CreateSliderView: View {
                     .frame(maxWidth: 250,maxHeight: 250)
                     .cornerRadius(25)
                 
-                Button{
+                mediumButton(text: "Bild auswählen") {
                     viewModel.choosePhoto()
-                }label: {
-                    Text("Bild auswählen")
-                        .frame(minWidth: 50,maxWidth: 150)
-                        .frame(height: 40,alignment: .center)
-                        .background(isHoverChoosePhoto ? Color.primary.opacity(0.5) : Color.primary.opacity(0.2))
-                        .cornerRadius(10)
-                }.buttonStyle(PlainButtonStyle())
-                    .onHover { isHover in
-                        withAnimation(.spring()){
-                            isHoverChoosePhoto = isHover
-
-                        }
-                    }
+                }
                 Toggle("Öffentlich", isOn: $viewModel.isPublic)
 
                 TextFieldSingle(title: "Title", text: $viewModel.title)
@@ -42,31 +30,12 @@ struct CreateSliderView: View {
                 
                     .toast(isShowing: $viewModel.uploadComplete,text: "Slider erfolgreich erstellt")
                 
-                Button{
+                UploadImageButton(text: "Slider erstellen",uploadProgress: $viewModel.uploadProgress, uploadCompletet: $viewModel.uploadComplete) {
                     Task{
                         try await viewModel.createSlider()
                         viewModel.clearFields()
                     }
-                }label: {
-                    VStack{
-                        Text("Slider erstellen")
-                        if viewModel.uploadProgress > 0 && viewModel.uploadProgress < 1 {
-                            ProgressView()
-                        }
-                    }
-                        .frame(minWidth: 60,maxWidth: 160)
-                        .frame(height: 50,alignment: .center)
-                    
-                        .background(isHoverCreateButton ? Color.primary.opacity(0.5) : Color.primary.opacity(0.2))
-                        .cornerRadius(15)
-
-                }.buttonStyle(PlainButtonStyle())
-                    .onHover { isHover in
-                        withAnimation(.spring()){
-                            isHoverCreateButton = isHover
-
-                        }
-                    }
+                }
 
             }
         }.padding()

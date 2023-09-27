@@ -12,8 +12,7 @@ struct AddProduktView: View {
     @StateObject var viewModel = AddProductViewModel()
     @EnvironmentObject var categoeyViewModel : CategorieViewModel
     @State private var imagePickerPresent = false
-    @State var onHoverButton = false
-    @State var onHoverPhoto = false
+ 
     
 
     var body: some View {
@@ -28,16 +27,9 @@ struct AddProduktView: View {
                                 .frame(maxWidth: 300)
                                 .cornerRadius(20)
                             
-                            Button("Produktbild", action: viewModel.choosePhoto)
-                                .font(.title3.bold())
-                                .padding(.horizontal,13)
-                                .padding(.vertical,8)
-                                .background(onHoverPhoto ? .green : .gray)
-                                .cornerRadius(10)
-                                .buttonStyle(.plain)
-                                .onHover { onHover in
-                                    onHoverPhoto = onHover
-                                }
+                            mediumButton(text: "Bild auswählen") {
+                                viewModel.choosePhoto()
+                            }
                             
                             
                             TextFieldSingle(title: "Produktname", text: $viewModel.title)
@@ -114,38 +106,18 @@ struct AddProduktView: View {
         
             .toast(isShowing: $viewModel.uploadComplete)
         
-        if !viewModel.uploadComplete{
-            Button(action: {
-                Task{
-                    try await viewModel.createProduct()
-                    viewModel.resetFields()
-                }
-
-            }) {
-                HStack{
-                    if viewModel.uploadProgress > 0 && viewModel.uploadProgress < 1 {
-                        ProgressView("Uploading", value: viewModel.uploadProgress)
-                    }
-
-                    Text("Produkt Erstellen")
-                        .font(.title2)
-                        .toast(isShowing: $viewModel.uploadComplete)
-                        
-                }
-
-                .padding(.horizontal)
-                .padding(.vertical,10)
-                .background(onHoverButton ? .green : .gray)
-                .cornerRadius(10)
+        
+        UploadImageButton(text: "Produkt erstellen",frameHeight: 60,uploadProgress: $viewModel.uploadProgress, uploadCompletet: $viewModel.uploadComplete) {
+            Task{
+                try await viewModel.createProduct()
+                viewModel.resetFields()
             }
-            .frame(width: viewModel.uploadProgress > 0 ? 300 : 200)
-            .cornerRadius(10)
-            .buttonStyle(.plain)
-            .onHover { onHover in
-                onHoverButton = onHover}
-            .padding(.bottom,100)
+        }            .padding(.bottom,100)
 
-        }
+        
+
+
+        
         
         
     }

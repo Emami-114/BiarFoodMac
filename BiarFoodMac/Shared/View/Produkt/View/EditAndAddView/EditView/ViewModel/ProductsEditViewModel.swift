@@ -47,6 +47,8 @@ class ProductsEditViewModel: ObservableObject {
         self._imageUrl = Published(initialValue: product.imageUrl)
         self._isCold = Published(initialValue: product.isCold)
         self._isPublic = Published(initialValue: product.isPublic)
+        self._adult = Published(initialValue: product.adult)
+        self._minimumAge = Published(initialValue: product.minimumAge)
     }
     
     
@@ -84,7 +86,8 @@ class ProductsEditViewModel: ObservableObject {
     @Published var ingredientsAndAlegy = ""
     @Published var madeIn = ""
     @Published  var unitAmountPrice = ""
-    
+    @Published  var adult = false
+    @Published  var minimumAge = 0
     //Mark: Nähwertdeklaration
     @Published var referencePoint = "pro 100ml"
     @Published var calorificKJ = ""
@@ -117,7 +120,7 @@ class ProductsEditViewModel: ObservableObject {
 
         
         
-        productRepository.updateProduct(with: id, title: title, description: description, price: preiseDouble, categorie: Array(categorie), brand: brand, sale: sale, salePrice: salePreiseDouble, unit: unit, imageUrl: updateImage(uploadImageUrl: uploadImageUrl), unitAmountPrice: unitAmountPrice, tax: Int(tax) ?? 0, articleNumber: articleNumber, available: available, availableAmount: Int(availableAmount) ?? 0, deposit: deposit, depositType: depositType, depositPrice: pfandPreiseDouble, netFillingQuantity: netFillingQuantity, alcoholicContent: alcoholicContent, nutriScore: nutriScore, ingredientsAndAlegy: ingredientsAndAlegy, madeIn: madeIn, referencePoint: referencePoint, calorificKJ: calorificKJ, caloricValueKcal: caloricValueKcal, fat: fat, fatFromSour: fatFromSour, carbohydrates: carbohydrates, CarbohydratesFromSugar: CarbohydratesFromSugar, protein: protein, salt: salt, additionallyWert: additionallyWert,isCold: isCold,isPublic: isPublic)
+        productRepository.updateProduct(with: id, title: title, description: description, price: preiseDouble, categorie: Array(categorie), brand: brand, sale: sale, salePrice: salePreiseDouble, unit: unit, imageUrl: updateImage(uploadImageUrl: uploadImageUrl), unitAmountPrice: unitAmountPrice, tax: Int(tax) ?? 0, articleNumber: articleNumber, available: available, availableAmount: Int(availableAmount) ?? 0, deposit: deposit, depositType: depositType, depositPrice: pfandPreiseDouble, netFillingQuantity: netFillingQuantity, alcoholicContent: alcoholicContent, nutriScore: nutriScore, ingredientsAndAlegy: ingredientsAndAlegy, madeIn: madeIn, referencePoint: referencePoint, calorificKJ: calorificKJ, caloricValueKcal: caloricValueKcal, fat: fat, fatFromSour: fatFromSour, carbohydrates: carbohydrates, CarbohydratesFromSugar: CarbohydratesFromSugar, protein: protein, salt: salt, additionallyWert: additionallyWert,isCold: isCold,isPublic: isPublic,adult: adult,minimumAge: minimumAge)
     }
     
     
@@ -196,7 +199,7 @@ class ProductsEditViewModel: ObservableObject {
     }
     
     
-    func choosePhoto() {
+    @MainActor func choosePhoto() {
         self.selectedImage = PhotoChoisePanel.shared.choosePhoto()
     }
 }

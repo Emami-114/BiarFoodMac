@@ -19,7 +19,7 @@ struct UserEditView: View {
     var body: some View {
         VStack(spacing: 20){
             HStack{
-                ButtonIcon(icon: "xmark", fontSize: .title.bold()) {
+                SmallButton(icon: "xmark", fontSize: .title.bold()) {
                     withAnimation(.spring()){
                         showEditView = false
                     }
@@ -60,7 +60,7 @@ struct UserEditView: View {
             Toggle("Email Bestätigung", isOn: $viewModel.emailConfirm)
                 .font(.title2)
             
-            ButtonConfirm(text: "Updaten") {
+            mediumButton(text: "Updaten") {
                 viewModel.updateUser(with: user.id)
                 showEditView = false
             }

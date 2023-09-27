@@ -10,10 +10,11 @@ import SwiftUI
 struct CheckBoxCategory: View {
     let category : Category
     @Binding var selectedCategories : Set<String>
+    @State private var onHover = false
     var body: some View {
         Button{
             if selectedCategories.contains(category.id ?? ""){
-                selectedCategories.remove(category.id ?? "" )
+                selectedCategories.remove(category.id ?? "")
             }else{
                 selectedCategories.insert(category.id ?? "")
             }
@@ -24,11 +25,16 @@ struct CheckBoxCategory: View {
                 Spacer()
             }
         }.buttonStyle(.bordered)
+            .onHover { onHover in
+                withAnimation(.easeInOut(duration: 0.4)){
+                    self.onHover = onHover
+                }
+            }
     }
 }
 
 struct CheckBoxCategory_Previews: PreviewProvider {
     static var previews: some View {
-        CheckBoxCategory(category: .init(mainId: "",name: "Category", desc: "", type: "Main", imageUrl: ""), selectedCategories: .constant([""]))
+        CheckBoxCategory(category: .init(mainId: "",name: "Category", desc: "", type: "Main", imageUrl: ""), selectedCategories: .constant([]))
     }
 }

@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct ButtonConfirm: View {
+struct mediumButton: View {
     @State private var isHover = false
     var text = "Erstellen"
+    var frameHeight : CGFloat = 40
     var onCreate: () -> Void
     var body: some View {
         Button{
@@ -19,8 +20,8 @@ struct ButtonConfirm: View {
                 Text(text)
                 
             }
-                .frame(minWidth: 60,maxWidth: 160)
-                .frame(height: 50,alignment: .center)
+                .frame(minWidth: 60,maxWidth: 130)
+                .frame(height: frameHeight,alignment: .center)
             
                 .background(isHover ? Color.primary.opacity(0.5) : Color.primary.opacity(0.2))
                 .cornerRadius(10)
@@ -38,6 +39,6 @@ struct ButtonConfirm: View {
 
 struct ButtonConfirm_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonConfirm(onCreate: {})
+        mediumButton(onCreate: {})
     }
 }

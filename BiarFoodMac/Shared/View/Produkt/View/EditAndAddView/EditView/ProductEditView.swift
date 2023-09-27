@@ -51,7 +51,7 @@ struct ProductEditView: View {
                             .frame(maxWidth: 300)
                             .cornerRadius(20)
                     }
-                    Button("Produktbild", action: viewModel.choosePhoto)
+                    Button("Produktbild", action: {viewModel.choosePhoto()})
                         .font(.title3.bold())
                         .padding(.horizontal,13)
                         .padding(.vertical,8)
@@ -73,7 +73,7 @@ struct ProductEditView: View {
                             TextFieldSingle(title: "Angebotspreis (€)", text: $viewModel.salePrice)
                         }
                     }
-
+                   
 
                     VStack(alignment: .leading){
 
@@ -156,7 +156,7 @@ struct ProductEditView: View {
 
         Button(action: {
             Task{
-                try await viewModel.updateProduct(with: product.id ?? "")
+                try await viewModel.updateProduct(with: product.id)
                 showEditView = false
 //                viewModel.resetFields()
             }
@@ -210,7 +210,14 @@ struct ProductEditView: View {
 
     @ViewBuilder
     func addComponents1() -> some View{
-
+        Toggle("Altersbeschränkung", isOn: $viewModel.adult)
+        if viewModel.adult{
+            Picker("Mindestalter", selection: $viewModel.minimumAge) {
+                ForEach(Adult.allCases,id: \.self) { age in
+                    Text(age.title).tag(age.age)
+                }
+            }
+        }
         HStack{
             Picker("Einheit", selection: $viewModel.unit) {
                 ForEach(viewModel.unitList,id: \.self) { unit in
@@ -252,7 +259,7 @@ struct ProductEditView: View {
             if viewModel.deposit {
                 Picker("Pfandtyp", selection: $viewModel.depositType) {
                     ForEach(Pfand.allCases,id: \.self) { pfand in
-                        Text(pfand.title)
+                        Text(pfand.title).tag(pfand.title)
                     }
                 }
 
@@ -264,7 +271,7 @@ struct ProductEditView: View {
 
 struct ProductEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductEditView(product: .init(title: "", desc: "", price: 0.0, categorie:[""],brand: "",sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true),showEditView: .constant(false))
+        ProductEditView(product: .init(title: "", desc: "", price: 0.0, categorie:[],brand: "",sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true,adult: false,minimumAge: 0),showEditView: .constant(false))
             .environmentObject(CategorieViewModel())
     }
 }

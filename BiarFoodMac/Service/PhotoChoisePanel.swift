@@ -7,10 +7,9 @@
 
 import Foundation
 import AppKit
+@MainActor
 class PhotoChoisePanel {
     static let shared = PhotoChoisePanel()
-    
-    
     
     func choosePhoto() -> NSImage {
         var selectedImage: NSImage = NSImage()

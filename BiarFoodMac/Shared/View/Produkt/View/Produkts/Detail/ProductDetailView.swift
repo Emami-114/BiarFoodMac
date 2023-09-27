@@ -48,8 +48,6 @@ struct ProductDetailView: View {
                                 .cornerRadius(25)
                             .clipped()
                         
-                       
-                    
                     VStack{
                         HStack{
                             if product.sale {
@@ -96,7 +94,7 @@ struct ProductDetailView: View {
                                 Text(product.depositType )
                                     .font(.title.bold())
                                 Spacer()
-                                Text(String(format: "%.2f", product.depositPrice ) + "€ Pfand")
+                                Text(priceReplacingWithComma(product.depositPrice) + "€ Pfand")
                                     .font(.title2.bold())
                                 
                             }
@@ -120,18 +118,18 @@ struct ProductDetailView: View {
                         
                         if product.sale {
                             HStack{
-                                Text("\(String(format: "%.2f", product.price ))€")
+                                Text("\(priceReplacingWithComma(_: product.price))€")
                                     .font(.title.bold())
                                     .strikethrough(true,pattern: .solid,color: .red)
                                     
                                 
-                                Text("\(String(format: "%.2f", product.salePrice ))€")
+                                Text("\(priceReplacingWithComma(_: product.salePrice))€")
                                     .font(.title.bold())
                             }
                             
                                 
                         } else {
-                            Text("\(String(format: "%.2f", product.price ))€")
+                            Text("\(priceReplacingWithComma(_: product.price))€")
                                 .font(.title.bold())
                         }
                         
@@ -175,7 +173,7 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(product: .init(title: "", desc: "", price: 0.0, categorie: [],brand: "", sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true),showEditView: .constant(false),showDetailView: .constant(false))
+        ProductDetailView(product: .init(title: "", desc: "", price: 0.0, categorie: [],brand: "", sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true,adult: false,minimumAge: 0),showEditView: .constant(false),showDetailView: .constant(false))
             .frame(height: 800)
     }
 }

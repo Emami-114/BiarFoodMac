@@ -31,7 +31,7 @@ class AddProductViewModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var description : String = ""
-    @Published var price: String = "0.0"
+    @Published var price: String = ""
     @Published var categorie : Set<String> = []
     @Published var brand = ""
     @Published var sale : Bool = false
@@ -50,17 +50,19 @@ class AddProductViewModel: ObservableObject {
     @Published var zutatUndAlergie = ""
     @Published var productCountry = ""
     @Published  var unitAmountPreise = ""
+    @Published  var adult = false
+    @Published  var minimumAge = 0
 
     //Mark: Nähwertdeklaration
     @Published var bezugsPunk = ""
-    @Published var brennwertKJ = ""
-    @Published var brennwertKcal = ""
-    @Published var fett = ""
-    @Published var fettDavonSaueren = ""
-    @Published var kohlenhydrate = ""
-    @Published var kohlenhydrateDavonZucker = ""
-    @Published var eiweiß = ""
-    @Published var salz = ""
+    @Published var brennwertKJ = "0"
+    @Published var brennwertKcal = "0"
+    @Published var fett = "0"
+    @Published var fettDavonSaueren = "0"
+    @Published var kohlenhydrate = "0"
+    @Published var kohlenhydrateDavonZucker = "0"
+    @Published var eiweiß = "0"
+    @Published var salz = "0"
     @Published var additionallyWert = ""
     @Published var isCold: Bool = false
     @Published var isPublic : Bool = true
@@ -71,31 +73,60 @@ class AddProductViewModel: ObservableObject {
     
     
     func createProduct() async throws{
-        let preiseReplacing = price.replacingOccurrences(of: ",", with: ".")
-        let salePreiseReplacing = salePrice.replacingOccurrences(of: ",", with: ".")
-        let pfandPreiseReplacing = pfandPreise.replacingOccurrences(of: ",", with: ".")
-        let preiseDouble = Double(preiseReplacing) ?? 0.0
-         let salePreiseDouble = Double(salePreiseReplacing) ?? 0.0
-        let pfandPreiseDouble = Double(pfandPreiseReplacing)  ?? 0.0
-        
         let imageUrl = try await uploadToFirestorage()
         
-        productRepository.createProduct(title: title, description: description, price: preiseDouble, categorie: Array(categorie),brand: brand ,sale: sale, salePrice: salePreiseDouble, unit: unit, imageUrl: imageUrl, unitAmountPrice: unitGrundAnount, tax: Int(tax) ?? 0, articleNumber: articleNumber, available: available, availableAmount: Int(availableAmount) ?? 0, deposit: pfand, depositType: pfandArt.title, depositPrice: pfandPreiseDouble, netFillingQuantity: nettoFullmenge, alcoholicContent: alkoholgehalt, nutriScore: NutriScore.rawValue, ingredientsAndAlegy: zutatUndAlergie, madeIn: productCountry, referencePoint: bezugsPunk, calorificKJ: brennwertKJ, caloricValueKcal: brennwertKcal, fat: fett, fatFromSour: fettDavonSaueren, carbohydrates: kohlenhydrate, CarbohydratesFromSugar: kohlenhydrateDavonZucker, protein: eiweiß, salt: salz, additionallyWert: additionallyWert,isCold: isCold,isPublic: isPublic)
+        productRepository.createProduct(
+            title: TrimmerWithSpaceAndNewLine(title),
+            description: TrimmerWithSpaceAndNewLine(description),
+            price: priceReplacingWithPoint(price),
+            categorie: Array(categorie),
+            brand: TrimmerWithSpaceAndNewLine(brand) ,
+            sale: sale,
+            salePrice: priceReplacingWithPoint(salePrice),
+            unit: unit,
+            imageUrl: imageUrl,
+            unitAmountPrice: TrimmerWithSpaceAndNewLine(unitGrundAnount),
+            tax: Int(tax) ?? 0,
+            articleNumber: TrimmerWithSpaceAndNewLine(articleNumber),
+            available: available, availableAmount: Int(availableAmount) ?? 0,
+            deposit: pfand,
+            depositType: pfandArt.title,
+            depositPrice: priceReplacingWithPoint(pfandPreise),
+            netFillingQuantity: TrimmerWithSpaceAndNewLine(nettoFullmenge),
+            alcoholicContent: alkoholgehalt,
+            nutriScore: NutriScore.rawValue,
+            ingredientsAndAlegy: zutatUndAlergie,
+            madeIn: TrimmerWithSpaceAndNewLine(productCountry),
+            referencePoint: bezugsPunk,
+            calorificKJ: brennwertKJ,
+            caloricValueKcal: brennwertKcal,
+            fat: fett, fatFromSour: fettDavonSaueren,
+            carbohydrates: kohlenhydrate,
+            CarbohydratesFromSugar: kohlenhydrateDavonZucker,
+            protein: eiweiß, 
+            salt: salz,
+            additionallyWert: additionallyWert,
+            isCold: isCold,
+            isPublic: isPublic,
+            adult: adult,
+            minimumAge: minimumAge)
     }
-    @MainActor
+    
     func uploadToFirestorage() async throws -> String{
         guard let image = selectedImage else {return "" }
-        var imageUrl = ""
-        var progress = 0.0
-        try await storageRepository.uploadToFirestorage(image: image) { imageurl, progres in
-            imageUrl = imageurl
-            progress = progres
+                var imageUrl = ""
+        try await storageRepository.uploadToFirestorage(image: image, uploadprogrss: { progres in
+            self._uploadProgress = Published(initialValue: progres)
+                    if progres >= 1 {
+                        self._uploadComplete = Published(initialValue: true)
+                    }
+            print("Upload Image Progress: \(progres)")
 
-        }
-        if progress >= 1 {
-            self.uploadComplete = true
-        }
-        self.uploadProgress = progress
+        }, imageUrl: { imageurl in
+            imageUrl = imageurl
+        })
+
+
         return imageUrl
         
                    
@@ -138,12 +169,13 @@ class AddProductViewModel: ObservableObject {
         self.selectedImage = nil
         self.isCold = false
         self.isPublic = true
+        self.unitGrundAnount = ""
 
         
     }
     
     
-    func choosePhoto() {
+    @MainActor func choosePhoto() {
         self.selectedImage = PhotoChoisePanel.shared.choosePhoto()
     }
     

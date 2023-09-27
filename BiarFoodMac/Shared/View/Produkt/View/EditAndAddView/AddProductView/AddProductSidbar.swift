@@ -15,7 +15,14 @@ struct AddProductSidbar: View {
         VStack(alignment: .leading,spacing: 20){
             Toggle("Offentlich", isOn: $viewModel.isPublic)
             Toggle("Kühlware", isOn: $viewModel.isCold)
-            
+            Toggle("Altersbeschränkung", isOn: $viewModel.adult)
+            if viewModel.adult{
+                Picker("Mindestalter", selection: $viewModel.minimumAge) {
+                    ForEach(Adult.allCases,id: \.self) { age in
+                        Text(age.title).tag(age.age)
+                    }
+                }
+            }
             Section{
                 Picker("Einheit", selection: $viewModel.unit) {
                     ForEach(viewModel.unitList,id: \.self) { unit in
@@ -31,6 +38,8 @@ struct AddProductSidbar: View {
                     }
                 }
             }
+          
+           
             
                 VStack(alignment: .leading){
                     Text("Produk Kategorien")

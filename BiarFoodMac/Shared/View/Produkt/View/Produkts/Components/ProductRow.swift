@@ -125,18 +125,18 @@ struct ProductRow: View {
                     
                 if product.sale {
                         HStack{
-                            Text("\(String(format: "%.2f", product.price ))€")
+                            Text("\(priceReplacingWithComma(_:product.price))€")
                                 .font(.body.bold())
                                 .strikethrough(true,pattern: .solid,color: .red)
                                 
                             
-                            Text("\(String(format: "%.2f", product.salePrice ))€")
+                            Text("\(priceReplacingWithComma(_: product.salePrice))€")
                                 .font(.title2.bold())
                         }
                         
                             
                     } else {
-                        Text("\(String(format: "%.2f", product.price ))€")
+                        Text("\(priceReplacingWithComma(_:product.price))€")
                             .font(.title2.bold())
                     }
                 
@@ -165,7 +165,7 @@ struct ProductRow: View {
 
 struct ProductRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRow(product: .init(title: "", desc: "", price: 0.0, categorie: [], brand: "", sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true),showAlert: {})
+        ProductRow(product: .init(title: "", desc: "", price: 0.0, categorie: [], brand: "", sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true,adult: false,minimumAge: 0),showAlert: {})
     }
 }
 

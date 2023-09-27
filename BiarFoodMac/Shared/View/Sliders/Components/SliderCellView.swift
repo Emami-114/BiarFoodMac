@@ -39,9 +39,9 @@ struct SliderCellView: View {
                         .rotationEffect(Angle(degrees: 130))
                         .offset(x: -40,y: -45)
                         .overlay(content: {
-                            Text(slider.isPublich ? "Öffentlich"  : "Privat")
-                                .frame(width: 100)
-                                .font(.title2)
+                            Text(slider.isPublich ? "Öffentlich"  : "nicht öffentlich")
+                                .frame(width: 130)
+                                .font(.title3)
                                 .rotationEffect(Angle(degrees: 40))
                                 .offset(x: -34,y: -40)
 

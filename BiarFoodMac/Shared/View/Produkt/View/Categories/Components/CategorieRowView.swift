@@ -15,7 +15,7 @@ struct CategorieRowView: View {
     @State var isHover = false
     var body: some View {
         VStack(alignment: .leading){
-            HStack{
+            HStack(alignment: .center){
                 KFImage(URL(string: categorie.imageUrl))
                     .loadDiskFileSynchronously()
                     .cacheMemoryOnly()
@@ -58,10 +58,13 @@ struct CategorieRowView: View {
            
         }.padding(5)
             .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(lineWidth: 0.5))
+            .background(RoundedRectangle(cornerRadius: 5).stroke(lineWidth: isHover ? 1.5 : 0.8).fill(isHover ? Color.primary.opacity(0.8) : Color.primary.opacity(0.4)))
         .padding(.horizontal,10)
         .onHover { ishover in
-            self.isHover = ishover
+            withAnimation(.spring()){
+                self.isHover = ishover
+
+            }
         }
         
         

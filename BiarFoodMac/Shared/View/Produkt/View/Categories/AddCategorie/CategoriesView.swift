@@ -86,7 +86,10 @@ struct CategoriesView: View {
                 .alert(isPresented: $showRemoveAlert) {
                     Alert(title: Text("Kategorie Löschen"),
                           primaryButton: .destructive(Text("Löschen"),action: {
-                        viewModel.deleteCategory(with: selectedDeleteCategory?.id ?? "",imageUrl: selectedDeleteCategory?.imageUrl ?? "")
+                        if let selectedDeleteCategory = selectedDeleteCategory{
+                            viewModel.deleteCategory(wit: selectedDeleteCategory.id ?? "", imageurl: selectedDeleteCategory.imageUrl)
+
+                        }
                     }),
                           secondaryButton: .cancel())
                 }

@@ -36,6 +36,27 @@ enum Pfand: String,CaseIterable {
     
 }
 
+enum Adult: String,CaseIterable {
+    case keine,min16,min18
+    
+    var title : String {
+        switch self {
+        case .keine : return "keine"
+        case .min16: return ">= 16"
+        case .min18: return ">= 18"
+        }
+    }
+    
+    var age : Int {
+        switch self {
+        case .keine : return 0
+        case .min16: return 16
+        case .min18: return 18
+        }
+    }
+    
+}
+
 
 enum NutriScore: String, CaseIterable {
     case keine = ""

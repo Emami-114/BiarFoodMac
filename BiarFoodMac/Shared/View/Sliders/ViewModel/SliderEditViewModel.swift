@@ -32,19 +32,18 @@ class SliderEditViewModel: ObservableObject {
         sliderRepository.updateSlider(with: id, title: title, desc: desc, imageUrl: updateImage(uploadImageUrl: imageUrl), isPublich: isPublic)
     }
     
-    @MainActor
     func uploadPhoto() async throws -> String {
         guard let image = selectedImage else {return ""}
         var imageUrl = ""
-        var progress = 0.0
-        try await storageRepository.uploadToFirestorage(image: image,path: "slider_images", completion: { imageurl, progres in
+        try await storageRepository.uploadToFirestorage(image: image,path: "slider_images", uploadprogrss: { progres in
+            self._uploadProgress = Published(initialValue: progres)
+                    if progres >= 1 {
+                        self._uploadComplete = Published(initialValue: true)
+                    }
+            print("Upload Image Progress: \(progres)")
+        }, imageUrl: { imageurl in
             imageUrl = imageurl
-            progress = progres
         })
-        if progress >= 1 {
-            self.uploadComplete = true
-        }
-        self.uploadProgress = progress
         return imageUrl
     
     }
@@ -57,7 +56,7 @@ class SliderEditViewModel: ObservableObject {
             return uploadImageUrl
         }
     }
-    func choosePhoto(){
+    @MainActor func choosePhoto(){
         self.selectedImage = PhotoChoisePanel.shared.choosePhoto()
     }
     
