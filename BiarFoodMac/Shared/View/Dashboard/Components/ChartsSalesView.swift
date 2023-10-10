@@ -8,8 +8,9 @@
 import SwiftUI
 import Charts
 
-struct DailySalesView: View {
+struct ChartsSalesView: View {
     var dialySales : [Sale]
+    @State private var onHover = false
     let title : String
     var body: some View {
         VStack(alignment: .leading,spacing: 15){
@@ -34,10 +35,26 @@ struct DailySalesView: View {
                         .interpolationMethod(.catmullRom)
                     
                     PointMark(x: .value("Time", sale.time), y: .value("Sale", sale.sales))
+                        
                         .foregroundStyle(Color.green)
+                        .annotation(position: .topLeading, alignment: .center) {
+                            if onHover{
+                                HStack{
+                                    Text("\(sale.sales)€")
+//                                    Image(systemName: "xmark")
+
+                                }
+                            }
+                           
+                        }
                 }
-            }
-            .frame(height: 300)
+            }.onHover(perform: { onHover in
+                withAnimation(.linear(duration: 0.4)){
+                    self.onHover = onHover
+
+                }
+            })
+            .frame(maxHeight: 300)
         }
         .padding(15)
         .background(RoundedRectangle(cornerRadius: 20,style: .continuous).fill(Color.primary.opacity(0.15)))
@@ -47,7 +64,7 @@ struct DailySalesView: View {
 
 struct DailySalesView_Previews: PreviewProvider {
     static var previews: some View {
-        DailySalesView(dialySales: [   Sale(sales: 20, time: "11:00"),
+        ChartsSalesView(dialySales: [   Sale(sales: 20, time: "11:00"),
                                        Sale(sales: 40, time: "12:00"),
                                        Sale(sales: 40, time: "1:00"),
                                        Sale(sales: 150, time: "2:00"),

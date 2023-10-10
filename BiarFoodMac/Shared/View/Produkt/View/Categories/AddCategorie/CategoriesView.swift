@@ -110,12 +110,16 @@ struct CategoriesView: View {
             
             VStack(alignment: .leading){
                 TextFieldSingle(title: "Name", text: $viewModel.title)
-                Text("Der Name ist das, was auf deiner Website angezeigt wird.")
+                    .help("Der Name ist das, was auf deiner App angezeigt wird.")
+
+                Text("Der Name ist das, was auf deiner App angezeigt wird.")
                     .font(.footnote)
             }
             
             VStack(alignment: .leading){
                 TextEditSingle(title: "Beschreibung", text: $viewModel.description)
+                    .help("Hier kannst du beschreibung von Kategorie hinzufügen")
+
                     .frame(maxHeight: 250)
                 Text("Die Beschreibung wird standardmäßig nicht angezeigt, kann aber bei einigen Themes angezeigt werden.")
                     .font(.footnote)
@@ -145,28 +149,13 @@ struct CategoriesView: View {
                         .cornerRadius(10)
                 }
            
-            
-            
-            Button(viewModel.selectedImage == nil ? "Kategorie bild" : "Bild Löschen", action: {
+            CustumMediumButton(text: viewModel.selectedImage == nil ? "Kategorie bild" : "Bild Löschen") {
                 if viewModel.selectedImage == nil{
                     viewModel.choosePhoto()
                 } else { viewModel.selectedImage = nil}
-                
-            })
-                .font(.title3.bold())
-                .padding(.horizontal,13)
-                .padding(.vertical,8)
-                .background(onHoverPhoto ? .green : .gray)
-                .cornerRadius(10)
-                .buttonStyle(.plain)
-                .onHover { onHover in
-                    onHoverPhoto = onHover
-                }
+            }
             
-            
-            
-            
-            Button{
+            UploadImageButton(text: "Kategorie hinzufügen", uploadProgress: $viewModel.uploadProgress, uploadCompletet: $viewModel.uploadComplete) {
                 if viewModel.selectedCategorie == Category(mainId: "",name: "", desc: "", type: "",imageUrl: ""){
                     viewModel.type = "Main"
                     Task {
@@ -182,19 +171,8 @@ struct CategoriesView: View {
                     }
                     
                 }
-
-                
-            }label: {
-                Text("Kategorie hinzufügen")
-                    .font(.title2)
-                    .frame(width: 200,height: 50)
-                    .background(isHover ? .green : .gray)
-                    .cornerRadius(15)
             }
-            .buttonStyle(.plain)
-            .onHover { isHover in
-                self.isHover = isHover
-            }
+         
         }.padding()
             .frame(maxWidth: .infinity,maxHeight: .infinity)
 
@@ -203,11 +181,3 @@ struct CategoriesView: View {
     
 }
 
-
-
-
-//struct CategoriesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CategoriesView()
-//    }
-//}

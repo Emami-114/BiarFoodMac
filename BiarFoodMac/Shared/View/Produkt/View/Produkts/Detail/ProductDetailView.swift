@@ -15,23 +15,19 @@ struct ProductDetailView: View {
     var body: some View {
         VStack {
             HStack{
-                Button{
-                    withAnimation(.easeInOut(duration: 1)){
+                CustomCloseButtom {
+                    withAnimation(.linear(duration: 0.5)){
                         showDetailView = false
                     }
-                }label: {
-                    Image(systemName: "xmark")
-                        .font(.title)
-                }.buttonStyle(.plain)
+                }
                 Spacer()
-                Button{
-                    withAnimation(.easeInOut(duration: 1)){
+                CustumMediumButton (text: "Bearbeiten",frameHeight: 30){
+                    withAnimation(.linear(duration: 0.5)){
                         showEditView = true
 
                     }
-                }label: {
-                    Text("Bearbeiten")
                 }
+                
             }.padding()
             Spacer()
             
@@ -164,7 +160,8 @@ struct ProductDetailView: View {
         }.padding()
         .frame(minWidth: 500)
             .background(BlurView().ignoresSafeArea(.all,edges: .all))
-        
+            .animation(.spring(),value: showEditView)
+            .animation(.spring(),value: showDetailView)
         
         
     }

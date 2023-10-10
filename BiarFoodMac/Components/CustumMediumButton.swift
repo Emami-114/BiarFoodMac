@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct mediumButton: View {
+struct CustumMediumButton: View {
     @State private var isHover = false
     var text = "Erstellen"
     var frameHeight : CGFloat = 40
@@ -39,6 +39,6 @@ struct mediumButton: View {
 
 struct ButtonConfirm_Previews: PreviewProvider {
     static var previews: some View {
-        mediumButton(onCreate: {})
+        CustumMediumButton(onCreate: {})
     }
 }

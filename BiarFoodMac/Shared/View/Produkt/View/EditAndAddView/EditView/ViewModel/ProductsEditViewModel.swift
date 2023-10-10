@@ -62,7 +62,7 @@ class ProductsEditViewModel: ObservableObject {
     @Published  var selectedImage: NSImage? = nil
     
     @Published  var uploadProgress: Double = 0.0
-    @Published  var uploadComplete: Bool? = nil
+    @Published  var uploadComplete: Bool = false
     @Published var imageUrl = ""
     
     @Published var title: String = ""

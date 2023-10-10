@@ -24,12 +24,11 @@ struct ProductEditView: View {
     var body: some View {
         VStack {
             HStack{
-                Button{
-                    showEditView = false
-                }label: {
-                    Image(systemName: "xmark")
-                        .font(.title)
-                }.buttonStyle(.plain)
+                CustomCloseButtom {
+                    withAnimation(.spring()){
+                        showEditView = false
+                    }
+                }
                 Spacer()
             }.padding()
             ScrollView(.vertical,showsIndicators: true) {
@@ -51,16 +50,10 @@ struct ProductEditView: View {
                             .frame(maxWidth: 300)
                             .cornerRadius(20)
                     }
-                    Button("Produktbild", action: {viewModel.choosePhoto()})
-                        .font(.title3.bold())
-                        .padding(.horizontal,13)
-                        .padding(.vertical,8)
-                        .background(onHoverPhoto ? .green : .gray)
-                        .cornerRadius(10)
-                        .buttonStyle(.plain)
-                        .onHover { onHover in
-                            onHoverPhoto = onHover
-                        }
+                    CustumMediumButton(text: "Foto ändern") {
+                        viewModel.choosePhoto()
+                    }
+                    
 
                     TextFieldSingle(title: "Produktname", text: $viewModel.title)
                     TextEditSingle(title: "Produktbeschreibung", text: $viewModel.description)
@@ -74,14 +67,10 @@ struct ProductEditView: View {
                         }
                     }
                    
-
                     VStack(alignment: .leading){
 
-                        let listMainCategory = categoriesViewModel.categories.filter { mainCat in
-                            mainCat.type == "Main"
-                        }
                         ScrollView(.vertical){
-                            ForEach(listMainCategory,id:\.id){category in
+                            ForEach(categoriesViewModel.mainCategories,id:\.id){category in
                                 CheckBoxCategory(category: category, selectedCategories: $viewModel.categorie)
                                 let listSubCategory = categoriesViewModel.categories.filter { cate in
                                     cate.mainId == category.id
@@ -118,7 +107,7 @@ struct ProductEditView: View {
             }
         }.frame(minWidth: 500)
             .background(BlurView().ignoresSafeArea(.all,edges: .all))
-
+            .animation(.spring(),value: showEditView)
 
 
     }
@@ -154,34 +143,14 @@ struct ProductEditView: View {
         }
         TextEditSingle(title: "Zusätzliche Nährwert Information", text: $viewModel.additionallyWert)
 
-        Button(action: {
+        UploadImageButton(text: "Aktualisieren",uploadProgress: $viewModel.uploadProgress, uploadCompletet: $viewModel.uploadComplete) {
             Task{
                 try await viewModel.updateProduct(with: product.id)
                 showEditView = false
 //                viewModel.resetFields()
             }
-
-        }) {
-            HStack{
-                if viewModel.uploadProgress > 0 && viewModel.uploadProgress < 1 {
-                    ProgressView("Uploading", value: viewModel.uploadProgress)
-                }
-
-                Text("Produkt Updaten")
-                    .font(.title2)
-            }
-
-            .padding(.horizontal)
-            .padding(.vertical,10)
-            .background(onHoverButton ? .green : .gray)
-            .cornerRadius(10)
         }
-        .frame(width: viewModel.uploadProgress > 0 ? 300 : 200)
-        .cornerRadius(10)
-        .buttonStyle(.plain)
-        .onHover { onHover in
-            onHoverButton = onHover}
-
+       
         .padding(.bottom,100)
 
     }

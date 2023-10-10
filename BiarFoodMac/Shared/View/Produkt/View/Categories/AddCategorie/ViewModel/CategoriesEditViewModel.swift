@@ -16,7 +16,7 @@ class CategoriesEditViewModel : ObservableObject {
     @Published var imageUrl: String = ""
     @Published  var selectedImage: NSImage? = nil
     @Published  var uploadProgress: Double = 0.0
-    @Published  var uploadComplete: Bool? = nil
+    @Published  var uploadComplete: Bool = false
     
     let categoriesRepository = CategorieRepository.shared
     

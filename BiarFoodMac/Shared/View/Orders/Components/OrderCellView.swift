@@ -16,7 +16,7 @@ struct OrderCellView: View {
             VStack(alignment: .leading){
                 HStack{
                     Text("RechnungNR:")
-                    Text("13546")
+                    Text("\(order.invoiceNum)")
                         .font(.title2.bold())
                 }
                 HStack{
@@ -38,43 +38,49 @@ struct OrderCellView: View {
                     Text(order.customerCity)
                 }.font(.title2.bold())
 
-            }
+            }.frame(maxWidth: .infinity,alignment: .leading)
             VStack(alignment: .leading){
                 HStack{
                     Text("Liferung: ")
-                    Text("\(order.deliveryDate!.formatted(date: .abbreviated, time: .standard))")
+                    Text("\(order.deliveryDate!.formatted(.dateTime.day().month().year()))")
+                        .font(.title2.bold())
+                }
+                HStack{
+                    Text("Gesamtbetrag: ")
+                    Text("\(priceReplacingWithComma(_: order.totalPrice))€")
+                        .font(.title2.bold())
                 }
                 
-                HStack{
-                    Text("BezahlungArt: ")
-                    Text(order.paymentType)
-                }
-            }
+            }.frame(maxWidth: .infinity,alignment: .leading)
+            
+            
             Spacer()
             VStack(alignment: .leading){
                 HStack{
-                    Text("Bezahlt")
-                    Image(systemName: order.paymentSuccess ? "checkmark.circle" : "xmark.circle")
-                        .foregroundColor(order.paymentSuccess ? .green : .red)
+                    Text("Zahlungsart: ")
+                    Text(order.paymentType)
+                        .font(.title2.bold())
                 }
                 HStack{
                     Text("Abgeschlossen")
                     Image(systemName: order.successful ? "checkmark.circle" : "xmark.circle")
                         .foregroundColor(order.successful ? .green : .red)
+                        .font(.title2.bold())
                 }
-            }.font(.title2.bold())
+            }
             Spacer()
             Button{
                 withAnimation(.spring()){
                     showDetail.toggle()
                 }
             }label: {
-                Image(systemName: showDetail ? "arrow.up.circle" : "arrow.down.circle")
+                Image(systemName: showDetail ? "chevron.compact.up" : "chevron.compact.down")
                     .resizable()
-                    .frame(width: 40,height: 40)
+                    .symbolEffect(.bounce, value: showDetail)
+                    .frame(width: 30,height: 15)
                     .help("Rechnung Detail ansehen")
             }.buttonStyle(.plain)
-                .font(.title.bold())
+                .font(.title3.bold())
                 .foregroundColor(onHover ? Color.primary.opacity(0.9) : Color.primary.opacity(0.5))
                 .onHover(perform: { hovering in
                     withAnimation(.spring()){
@@ -83,9 +89,10 @@ struct OrderCellView: View {
                 })
         }.font(.title3)
             .padding()
+            .animation(.spring(),value: showDetail)
     }
 }
 
 #Preview {
-    OrderCellView(order: .init(userId: "", successful: true, customerName: "Abdul Emami", customerAdress: "Stauffenbergstr.14", customerZip: "07747", customerCity: "Jena", deliveryDate: Date(), paymentType: "Paypal", paymentSuccess: true, products: []), showDetail: .constant(false))
+    OrderCellView(order: orderExammple, showDetail: .constant(false))
 }

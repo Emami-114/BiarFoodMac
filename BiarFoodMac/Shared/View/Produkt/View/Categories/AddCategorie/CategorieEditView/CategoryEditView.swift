@@ -24,12 +24,11 @@ struct CategoryEditView: View {
         VStack(alignment: .leading,spacing: 20) {
             ScrollView(.vertical){
                 HStack{
-                    Button{
-                        showEditView = false
-                    }label: {
-                        Image(systemName: "xmark")
-                            .font(.title)
-                    }.buttonStyle(.plain)
+                    CustomCloseButtom {
+                        withAnimation(.spring()){
+                            showEditView = false
+                        }
+                    }
                     Spacer()
                 }.padding()
                 
@@ -51,16 +50,10 @@ struct CategoryEditView: View {
                         .frame(maxWidth: 300)
                         .cornerRadius(20)
                 }
-                Button("Kategorie Auswählen", action: {viewModel.choosePhoto()})
-                    .font(.title3.bold())
-                    .padding(.horizontal,13)
-                    .padding(.vertical,8)
-                    .background(onHoverPhoto ? .green : .gray)
-                    .cornerRadius(10)
-                    .buttonStyle(.plain)
-                    .onHover { onHover in
-                        onHoverPhoto = onHover
-                    }
+                CustumMediumButton(text: "Foto ändern") {
+                    viewModel.choosePhoto()
+                }.padding(.vertical)
+               
                 
                 VStack(spacing: 80){
                     TextFieldSingle(title: "Name", text: $viewModel.title)
@@ -70,26 +63,17 @@ struct CategoryEditView: View {
                     TextEditSingle(title: "Beschreibung", text: $viewModel.description)
                         .frame(height: 80)
                 
-                
-                Button{
+                    UploadImageButton(text: "Aktualisieren",uploadProgress: $viewModel.uploadProgress, uploadCompletet: $viewModel.uploadComplete) {
                         Task {
                             try await viewModel.updateCategory(with: category.id ?? "")
-                        }
-                    showEditView = false
+                            showEditView = false
 
-                }label: {
-                    Text("Kategorie updaten")
-                        .font(.title2)
-                        .frame(width: 200,height: 50)
-                        .background(isHover ? .green : .gray)
-                        .cornerRadius(15)
-                }
-                .buttonStyle(.plain)
-                .onHover { isHover in
-                    self.isHover = isHover
-                }
+                        }
+                    }.padding(.vertical)
+                
                 }
             }.padding()
+                .padding(.horizontal)
         }
     }
 }

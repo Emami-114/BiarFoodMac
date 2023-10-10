@@ -8,13 +8,14 @@
 import Foundation
 import Combine
 class ProductListViewModel : ObservableObject {
-    
     private var cancellables = Set<AnyCancellable>()
+    @Published var categories = [Category]()
+    @Published var selectedCategory = ""
     let productRepository = ProductRepository.shared
     let storageRepository = StorageRepository.shared
+    let categoriesRepository = CategorieRepository.shared
     @Published var products = [Product]()
     init() {
-        
         productRepository.products
             .dropFirst()
             .sink{ [weak self] products in
@@ -23,13 +24,29 @@ class ProductListViewModel : ObservableObject {
             }
             .store(in: &cancellables)
         
-        fetchProducts()
+        categoriesRepository.categories.sink{[weak self] categories in
+            guard let self else {return}
+            self.categories = categories.filter({ category in
+                category.type == "Main"
+            })
+        }.store(in: &cancellables)
+        
+        fetchCategories()
+        selectFirstCategory()
 
     }
     
-    func fetchProducts(){
-        
-        productRepository.fetchProducts()
+    func selectFirstCategory(){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.4) {
+            self.selectedCategory = self.categories.first?.id ?? ""
+        }
+    }
+    
+    func fetchProducts(with catId: String){
+        productRepository.fetchProducts(with: catId)
+    }
+    func fetchCategories(){
+        categoriesRepository.fetchCatrgories()
     }
     
     func deleteProduct(wit id: String,imageurl:String){

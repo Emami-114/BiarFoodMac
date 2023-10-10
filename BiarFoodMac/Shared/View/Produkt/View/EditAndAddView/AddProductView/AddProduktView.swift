@@ -27,7 +27,7 @@ struct AddProduktView: View {
                                 .frame(maxWidth: 300)
                                 .cornerRadius(20)
                             
-                            mediumButton(text: "Bild auswählen") {
+                            CustumMediumButton(text: "Bild auswählen") {
                                 viewModel.choosePhoto()
                             }
                             

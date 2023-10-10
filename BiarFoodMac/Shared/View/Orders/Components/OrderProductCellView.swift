@@ -33,7 +33,7 @@ struct OrderProductCellView: View {
                         .font(.headline)
 
                 }
-            }
+            }.frame(maxWidth: .infinity,alignment: .leading)
             Spacer()
             VStack(alignment: .leading,spacing: 10){
                 HStack{
@@ -49,7 +49,7 @@ struct OrderProductCellView: View {
                     Spacer()
 
                 }
-            }.frame(width: 200,alignment: .leading)
+            }.frame(maxWidth: .infinity,alignment: .leading)
             Spacer()
             if orderProduct.depositType != nil && !((orderProduct.depositType?.isEmpty) == nil) {
                 VStack(alignment: .leading,spacing: 10){
@@ -64,7 +64,7 @@ struct OrderProductCellView: View {
                         Text("\(priceReplacingWithComma(_: orderProduct.depositPrice ?? 0.0))€")
                             .font(.headline)
                     }
-                }
+                }.frame(maxWidth: .infinity,alignment: .trailing)
             }else {
                 VStack(alignment: .leading,spacing: 10){
                     HStack{
@@ -79,9 +79,10 @@ struct OrderProductCellView: View {
                             .font(.headline)
                     }
                 }.opacity(0)
+                    .frame(maxWidth: .infinity,alignment: .trailing)
             }
             
-        }
+        }.frame(maxWidth: .infinity)
     }
 }
 

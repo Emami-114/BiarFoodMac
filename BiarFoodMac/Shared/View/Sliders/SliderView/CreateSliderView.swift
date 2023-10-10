@@ -20,7 +20,7 @@ struct CreateSliderView: View {
                     .frame(maxWidth: 250,maxHeight: 250)
                     .cornerRadius(25)
                 
-                mediumButton(text: "Bild auswählen") {
+                CustumMediumButton(text: "Bild auswählen") {
                     viewModel.choosePhoto()
                 }
                 Toggle("Öffentlich", isOn: $viewModel.isPublic)

@@ -13,7 +13,7 @@ struct Sale: Identifiable {
 }
 
 struct DashboardView: View {
-    var dialySales: [Sale] = [
+    var dailySales: [Sale] = [
     Sale(sales: 20, time: "11:00"),
     Sale(sales: 40, time: "12:00"),
     Sale(sales: 40, time: "1:00"),
@@ -24,7 +24,7 @@ struct DashboardView: View {
     Sale(sales: 50, time: "6:00"),
     Sale(sales: 30, time: "7:00"),
     ]
-    var monthlySales: [Sale] = [
+    var annualSales: [Sale] = [
     Sale(sales: 20, time: "Januar"),
     Sale(sales: 40, time: "Februar"),
     Sale(sales: 140, time: "März"),
@@ -41,10 +41,21 @@ struct DashboardView: View {
     
     var body: some View {
                VStack {
+                   InfoCardsView()
+                       .padding(.vertical)
+                   Spacer()
                    HStack{
-                       DailySalesView(dialySales: dialySales, title: "Monatliche Umsätze")
-                       DailySalesView(dialySales: monthlySales,title: "Jahresumsatz")
+                       ChartsSalesView(dialySales: dailySales, title: "Täglicher Umsatz")
+                       PieChartsView(text: "Täglicher Umsatz", incomeAmount: "2000€",totalIncome: CGSize(width: 0.25, height: 1),totalprofit: CGSize(width: 0, height: 0.25))
+                           .frame(maxWidth: 500)
                    }
+                   
+                   HStack{
+                       ChartsSalesView(dialySales: annualSales,title: "Jahresumsatz")
+                       PieChartsView(text: "Jahresumsatz", incomeAmount: "30000€",totalIncome: CGSize(width: 0.4, height: 1),totalprofit: CGSize(width: 0, height: 0.4))
+                           .frame(maxWidth: 500)
+                   }
+                   Spacer()
            
                }.padding()
              

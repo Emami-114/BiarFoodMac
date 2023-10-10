@@ -17,43 +17,50 @@ struct ProduktListView: View {
     @StateObject var viewModel = ProductListViewModel()
     @State  var selectedProduct : Product = Product(title: "", desc: "", price: 0.0, categorie: [],brand:"",sale: false, salePrice: 0.0, unit: "", imageUrl: "", unitAmountPrice: "", tax: 0, articleNumber: "", available: false, availableAmount: 0, deposit: false, depositType: "", depositPrice: 0.0, netFillingQuantity: "", alcoholicContent: "", nutriScore: "", ingredientsAndAlegy: "", madeIn: "", referencePoint: "", calorificKJ: "", caloricValueKcal: "", fat: "", fatFromSour: "", carbohydrates: "", CarbohydratesFromSugar: "", protein: "", salt: "", additionallyWert: "",isCold: false,isPublic: true,adult: false,minimumAge: 0)
     
-    
     @State var presentDetailView : Bool = false
     var body: some View {
-        VStack {
-            
+        VStack (spacing: 0){
             HSplitView{
-                GeometryReader{proxy in
-                    ScrollView{
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(),spacing: 5), count: proxy.size.width < 750 ? 2 : proxy.size.width < 900 ? 3 : proxy.size.width < 1100 ? 4 : 6)) {
-                            ForEach(viewModel.products,id: \.id) { product in
-                                ProductRow(product: product,showAlert: {
-                                    selectedDeleteproduct = product
-                                    showDeleteAlert.toggle()
-                                })
-                                    
-                                    .onTapGesture {
-                                        withAnimation(.easeInOut){
-                                            selectedProduct = product
-                                            presentDetailView = true
-                                        }
+                VStack {
+                    TabTopBarView()
+                        .environmentObject(viewModel)
+                        .frame(height: 60)
+                        .padding(.horizontal)
+                    Spacer()
+                       
+                    if viewModel.products.isEmpty{
+                            ifProductsEmpty
+                        Spacer()
+                    }else {
+                        GeometryReader{proxy in
+                            ScrollView{
+                                LazyVGrid(columns: Array(repeating: GridItem(.flexible(),spacing: 5), count: proxy.size.width < 750 ? 2 : proxy.size.width < 900 ? 3 : proxy.size.width < 1100 ? 4 : 6)) {
+                                    ForEach(viewModel.products,id: \.id) { product in
+                                        ProductRow(product: product,showAlert: {
+                                            selectedDeleteproduct = product
+                                            showDeleteAlert.toggle()
+                                        })
+                                            .onTapGesture {
+                                                withAnimation(.easeInOut){
+                                                    selectedProduct = product
+                                                    presentDetailView = true
+                                                }
+                                            }
                                     }
-                                    
-                            }
-                            .alert(isPresented: $showDeleteAlert) {
-                                Alert(title: Text("\(selectedDeleteproduct?.title ?? "") Delete"), primaryButton: .destructive(Text("delete"),action: {
-                                    deleteAlert(with: selectedDeleteproduct?.id ?? "", imageUrl: selectedDeleteproduct?.imageUrl ?? "")
-                                    
-                                }), secondaryButton: .cancel())
-                            }
+                                    .alert(isPresented: $showDeleteAlert) {
+                                        Alert(title: Text("\(selectedDeleteproduct?.title ?? "") Delete"), primaryButton: .destructive(Text("delete"),action: {
+                                            deleteAlert(with: selectedDeleteproduct?.id ?? "", imageUrl: selectedDeleteproduct?.imageUrl ?? "")
+                                            
+                                        }), secondaryButton: .cancel())
+                                    }
+                                }
+                                .frame(minWidth: 600)
+                                
+                            }.padding()
+                                .frame(minWidth: 600)
                         }
-                        .frame(minWidth: 600)
-                        
-                        
-                        
-                        
-                    }.padding()
-                        .frame(minWidth: 600)
+                    }
+                    
                 }
                 
                 
@@ -73,12 +80,25 @@ struct ProduktListView: View {
             .ignoresSafeArea(.all,edges: .all)
 
         }
+        
         .searchable(text: $searchText)
         
-
     }
     func deleteAlert(with id : String,imageUrl : String){
         viewModel.deleteProduct(wit: id, imageurl: imageUrl)
+    }
+    private var ifProductsEmpty : some View {
+        VStack(alignment: .center){
+            Image(systemName: "bag.badge.questionmark.ar")
+                .resizable()
+                .renderingMode(.original)
+                .frame(width: 200,height: 200)
+            
+            Text("Keine Produkte vorhanden!")
+                .font(.title2)
+                .fontWeight(.semibold)
+        }.padding()
+        .background(.thinMaterial)
     }
 }
 

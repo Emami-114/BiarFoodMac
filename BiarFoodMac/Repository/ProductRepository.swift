@@ -15,18 +15,12 @@ class ProductRepository {
     var listner: ListenerRegistration?
     var products = CurrentValueSubject<[Product],Never>([])
     
-    
-
-    
-    
 }
-
-
-
 extension ProductRepository {
-    func fetchProducts(){
+    func fetchProducts(with catId: String){
         self.listner = FirebaseManager.shared.database.collection("produkten")
             .order(by: "createdAt", descending: true)
+            .whereField("categorie", arrayContains: catId)
             .addSnapshotListener({ queryDocument, error in
                 if let error = error {
                     print(error.localizedDescription)

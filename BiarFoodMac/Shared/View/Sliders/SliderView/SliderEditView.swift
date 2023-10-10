@@ -56,7 +56,7 @@ struct SliderEditView: View {
                     }
                    
                     
-                    mediumButton(text: "Bild auswählen") {
+                    CustumMediumButton(text: "Bild auswählen") {
                         viewModel.choosePhoto()
                     }
                     Toggle("Öffentlich", isOn: $viewModel.isPublic)

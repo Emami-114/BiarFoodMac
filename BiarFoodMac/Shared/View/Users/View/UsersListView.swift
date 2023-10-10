@@ -24,11 +24,11 @@ struct UsersListView: View {
                 TableColumn("Rolle", value: \.rolle)
                 TableColumn("Bearbeiten") { use in
                     HStack(spacing: 10){
-                        SmallButton(icon:"square.and.pencil",fontSize: .title2){
+                        CustomCloseButtom(icon:"square.and.pencil",fontSize: .title2){
                             self.selectedUser = use
                             self.showEditView = true
                         }.help("Benutzer Bearbeiten")
-                        SmallButton(icon: "trash.fill", fontSize: .title2){
+                        CustomCloseButtom(icon: "trash.fill", fontSize: .title2){
                             self.selectedUser = use
                             self.showAlert.toggle()
                         }.help("Benutzer Löschen")

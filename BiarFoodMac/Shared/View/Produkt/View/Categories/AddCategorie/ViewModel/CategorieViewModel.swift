@@ -19,7 +19,7 @@ class CategorieViewModel: ObservableObject {
     @Published var type: String = "".trimmingCharacters(in: .whitespacesAndNewlines)
     @Published  var selectedImage: NSImage? = nil
     @Published  var uploadProgress: Double = 0.0
-    @Published  var uploadComplete: Bool? = nil
+    @Published  var uploadComplete: Bool = false
     
     @Published var selectedCategorie = Category(mainId: "", name: "", desc: "", type: "", imageUrl: "")
     @Published var categories = [Category]()
